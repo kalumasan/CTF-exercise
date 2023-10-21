@@ -1,4 +1,6 @@
 # 技能树
+> 写在最前面，尽量在虚拟机里完成任务！！！
+> 说的就是你们几个！！！
 ## web
 ### Http协议
 - 请求方式：![](img/http请求方式.png)
@@ -90,3 +92,14 @@
 - 在使用vim时会创建临时缓存文件，关闭vim时缓存文件则会被删除，当vim异常退出后，因为未处理缓存文件，导致可以通过缓存文件恢复原始文件内容以 index.php 为例：第一次产生的交换文件名为 .index.php.swp，再次意外退出后，将会产生名为 .index.php.swo 的交换文件，第三次产生的交换文件则为 .index.php.swn
 #### .DS_Store
 - .DS_Store(英文全称 Desktop Services Store)是一种由苹果公司的Mac OS X操作系统所创造的隐藏文件，目的在于存贮目录的自定义属性，例如文件的图标位置或者是背景色的选择。相当于 Windows 下的 desktop.ini。
+
+### SVN泄露与hg泄露等
+- 这类源码泄漏通常是由于配置错误、误操作或不当的安全设置造成的。
+  - 如svn泄露：“在使用SVN管理本地代码过程中，会自动生成一个名为.svn的隐藏文件夹，其中包含重要的源代码信息。但一些网站管理员在发布代码时，不愿意使用‘导出’功能，而是直接复制代码文件夹到WEB服务器上，这就使.svn隐藏文件夹被暴露于外网环境，黑客可以借助其中包含的用于版本信息追踪的‘entries’文件，逐步摸清站点结构。
+  - 攻击者可以利用.svn/entries文件，获取到应用程序源代码、svn服务器账号密码等信息。同时，SVN产生的.svn目录下还包含了以.svn-base结尾的源代码文件副本（低版本SVN具体路径为text-base目录，高版本SVN为pristine目录），如果服务器没有对此类后缀做解析，黑客则可以直接获得文件源代码。
+- 首先准备好`dirsearch`、`dvcs-ripper`工具
+  - dirsearch可直接在Linux里面下载，dvcs-ripper需要从github上克隆到本地使用[dvcs-ripper下载](https://github.com/kost/dvcs-ripper/)
+- 具体操作步骤：
+  - 首先使用dirsearch扫描网站，查看是哪种泄露。
+  - 再使用dvcs中对应的工具扫描。
+
