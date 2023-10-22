@@ -103,3 +103,19 @@
   - 首先使用dirsearch扫描网站，查看是哪种泄露。
   - 再使用dvcs中对应的工具扫描。
 > .txt.i文件通常是Mercurial使用的二进制文件，用于存储文件的内容和元数据，以便追踪文件的版本历史、支持分支管理等操作。这些文件的具体格式通常是Mercurial的内部实现细节，而不是一种通用的文件格式，因此用户不需要直接处理或编辑这些文件。
+
+
+### git泄露
+#### 工具
+- [githack](https://github.com/BugScanTeam/GitHack)
+- 无提示状态下，先试用dirsearch扫描一遍。
+- `python2 GitHack.py http://www.example.com/.git/`(一定不要忘记.git)
+#### 常见问题
+- **log**
+  - 通过查看log（`git log`）,对比不同版本提交记录（`git diff 版本号`）。
+- **stash**
+  - ![](img/gitstash.png)
+
+### 密码口令
+- 弱密码：爆破（burpsuit）
+- 默认密码
